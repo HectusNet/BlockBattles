@@ -1,5 +1,14 @@
 package net.hectus.hectusblockbattles.warps;
 
+<<<<<<< Updated upstream
+=======
+import org.jetbrains.annotations.Contract;
+
+import net.hectus.hectusblockbattles.util.Cord;
+import static net.hectus.hectusblockbattles.warps.WarpSettings.Class;
+import static net.hectus.hectusblockbattles.warps.WarpSettings.*;
+
+>>>>>>> Stashed changes
 public enum Warp {
     DEFAULT(1,true),
     NETHER(0.8, false),

@@ -1,11 +1,22 @@
-package net.hectus.hectusblockbattles.match;
+package net.hectus.hectusblockbattles.match.old;
 
+<<<<<<< Updated upstream:src/main/java/net/hectus/hectusblockbattles/match/LocalMatchSingles.java
 import net.hectus.hectusblockbattles.IngameShop;
 import net.hectus.hectusblockbattles.maps.GameMap;
 import net.hectus.hectusblockbattles.playermode.PlayerMode;
 import net.hectus.hectusblockbattles.playermode.PlayerModeManager;
 import net.hectus.hectusblockbattles.structures.Structure;
 import net.hectus.hectusblockbattles.structures.Structures;
+=======
+import net.hectus.hectusblockbattles.util.Cord;
+import net.hectus.hectusblockbattles.maps.GameMap;
+import net.hectus.hectusblockbattles.playermode.PlayerMode;
+import net.hectus.hectusblockbattles.playermode.PlayerModeManager;
+import net.hectus.hectusblockbattles.warps.Warp;
+import net.hectus.hectusblockbattles.warps.WarpSettings;
+import net.hectus.color.McColor;
+import net.hectus.time.Time;
+>>>>>>> Stashed changes:src/main/java/net/hectus/hectusblockbattles/match/old/LocalMatchSingles.java
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.title.Title;
@@ -27,7 +38,12 @@ import java.time.Duration;
 import java.util.*;
 import java.util.logging.Level;
 
+<<<<<<< Updated upstream:src/main/java/net/hectus/hectusblockbattles/match/LocalMatchSingles.java
 public class LocalMatchSingles implements Match, Listener {
+=======
+@SuppressWarnings("deprecation")
+public class LocalMatchSingles implements OldMatch, Listener {
+>>>>>>> Stashed changes:src/main/java/net/hectus/hectusblockbattles/match/old/LocalMatchSingles.java
     private final JavaPlugin plugin;
     private final GameMap gameMap;
     private final List<Player> players;
@@ -246,6 +262,7 @@ public class LocalMatchSingles implements Match, Listener {
         return getPlayer(!getTurn());
     }
 
+<<<<<<< Updated upstream:src/main/java/net/hectus/hectusblockbattles/match/LocalMatchSingles.java
     public Block getLastBlock() {
         return lastBlock;
     }
@@ -253,6 +270,13 @@ public class LocalMatchSingles implements Match, Listener {
     public Location getLocation() {
         return location;
     }
+=======
+    public boolean outOfBounds(double x, double z) {
+        Cord m = this.warp.middle;
+
+        Cord lc = new Cord(m.x() - 4, m.y(), m.z() - 4);
+        Cord hc = new Cord(m.x() + 4, m.y(), m.z() + 4);
+>>>>>>> Stashed changes:src/main/java/net/hectus/hectusblockbattles/match/old/LocalMatchSingles.java
 
     public boolean checkBounds(int x, int z) {
         return x >= location.x() && x < location.x() + 9 && z >= location.z() && z < location.z() + 9;
@@ -324,4 +348,12 @@ public class LocalMatchSingles implements Match, Listener {
 
         nextTurn(true);
     }
+<<<<<<< Updated upstream:src/main/java/net/hectus/hectusblockbattles/match/LocalMatchSingles.java
+=======
+    
+    public void failed() {
+        getOppositeTurnPlayer().showTitle(Title.title(Component.empty(), Component.text(McColor.RED + "Failed!"), Title.Times.times(Duration.ofMillis(250), Duration.ofMillis(500), Duration.ofMillis(250))));
+        getCurrentTurnPlayer().showTitle(Title.title(Component.empty(), Component.text(McColor.RED + "Failed!"), Title.Times.times(Duration.ofMillis(250), Duration.ofMillis(500), Duration.ofMillis(250))));
+    }
+>>>>>>> Stashed changes:src/main/java/net/hectus/hectusblockbattles/match/old/LocalMatchSingles.java
 }

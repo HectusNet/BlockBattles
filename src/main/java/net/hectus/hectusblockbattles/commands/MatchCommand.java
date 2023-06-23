@@ -1,5 +1,6 @@
 package net.hectus.hectusblockbattles.commands;
 
+<<<<<<< Updated upstream
 import net.hectus.hectusblockbattles.HectusBlockBattles;
 import net.hectus.hectusblockbattles.maps.GameMap;
 import net.hectus.hectusblockbattles.maps.LocalGameMap;
@@ -8,6 +9,10 @@ import net.hectus.hectusblockbattles.match.Match;
 import net.hectus.hectusblockbattles.match.MatchManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+=======
+import net.hectus.hectusblockbattles.match.Match;
+import net.hectus.text.Completer;
+>>>>>>> Stashed changes
 import org.bukkit.Bukkit;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -37,6 +42,7 @@ public class MatchCommand implements CommandExecutor {
             return true;
         }
 
+<<<<<<< Updated upstream
         if (args.length != 2) {
             sender.sendMessage(Component.text("Wrong args! ", NamedTextColor.RED)
                     .append(Component.text("Usage: /match <player> <player>", NamedTextColor.GRAY)));
@@ -73,3 +79,25 @@ public class MatchCommand implements CommandExecutor {
         return true;
     }
 }
+=======
+        Match.start(Bukkit.getPlayer(args[1]), Bukkit.getPlayer(args[2]));
+
+        return true;
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        ArrayList<String> players = new ArrayList<>();
+        for (Player player : Bukkit.getOnlinePlayers()) players.add(player.getName());
+
+        if (args.length == 1)
+            return Completer.startComplete(args[0], List.of("start"));
+        else if (args.length == 2)
+            return Completer.containComplete(args[1], players);
+        else if (args.length == 3)
+            return Completer.containComplete(args[2], players);
+
+        return Collections.emptyList();
+    }
+}
+>>>>>>> Stashed changes
